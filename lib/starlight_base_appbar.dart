@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 
 abstract class StarlightBaseAppBar extends StatelessWidget
     with PreferredSizeWidget {
+  final bool startFromSafeArea;
   final Color? backgroundColor;
   final bool inheritanceAppBarColor;
   const StarlightBaseAppBar({
     Key? key,
+    this.startFromSafeArea = true,
     Size size = const Size.fromHeight(kToolbarHeight),
     this.backgroundColor,
     this.inheritanceAppBarColor = true,
@@ -26,6 +28,7 @@ abstract class StarlightBaseAppBar extends StatelessWidget
           ? Theme.of(context).appBarTheme.backgroundColor
           : backgroundColor,
       child: SafeArea(
+        top: startFromSafeArea,
         left: false,
         right: false,
         bottom: false,
